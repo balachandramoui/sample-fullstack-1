@@ -252,7 +252,7 @@ unprivileged `todo` user.
 
 ### 1. Launch an instance
 
-- AMI: **Amazon Linux 2023** or **Ubuntu 24.04**, `t2.micro`/`t3.micro` is plenty
+- AMI: **Ubuntu 24.04** (Amazon Linux 2023 also works), `t2.micro`/`t3.micro` is plenty
 - Key pair: create one and save the `.pem` file
 - Security group inbound rules:
   - **SSH (22)** from **My IP**
@@ -270,14 +270,14 @@ chmod 400 ~/keys/webdev.pem
 ### 2. Configure the server (once)
 
 ```bash
-scp -i ~/keys/webdev.pem -r deploy ec2-user@<PUBLIC-IP>:~
-ssh -i ~/keys/webdev.pem ec2-user@<PUBLIC-IP>
+scp -i ~/keys/webdev.pem -r deploy ubuntu@<PUBLIC-IP>:~
+ssh -i ~/keys/webdev.pem ubuntu@<PUBLIC-IP>
 sudo bash deploy/setup-ec2.sh
 ```
 
 `setup-ec2.sh` installs Node.js and nginx, creates the `todo` service account
 and `/opt/todo-app`, installs the systemd service and the nginx config, and
-enables both. (On an Ubuntu AMI the login user is `ubuntu`, not `ec2-user`.)
+enables both. (On an Amazon Linux AMI the login user is `ec2-user`, not `ubuntu`.)
 
 ### 3. Deploy your code (every time you change it)
 

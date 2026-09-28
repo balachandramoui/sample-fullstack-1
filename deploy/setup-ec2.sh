@@ -4,8 +4,10 @@
 #
 # Copy this whole deploy/ folder to the server and run it once as root:
 #
-#   scp -i mykey.pem -r deploy ec2-user@<PUBLIC-IP>:~
-#   ssh -i mykey.pem ec2-user@<PUBLIC-IP>
+#   scp -i mykey.pem -r deploy ubuntu@<PUBLIC-IP>:~
+#   ssh -i mykey.pem ubuntu@<PUBLIC-IP>
+#
+# (On Amazon Linux the login user is ec2-user instead of ubuntu.)
 #   sudo bash deploy/setup-ec2.sh
 #
 # It installs Node.js and nginx, creates the service account and directories,
